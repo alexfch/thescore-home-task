@@ -1,6 +1,8 @@
 package hometask;
 
 import java.net.MalformedURLException;
+import java.net.URL;
+import java.time.Duration;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -22,6 +24,7 @@ public class BaseTest {
         options.setApp(System.getProperty("user.dir") + "/app/thescore_24.5.0.apk");
     
         driver = new AndroidDriver(AppiumServer.getUrl(), options);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
      @AfterClass public static void teardown(){
