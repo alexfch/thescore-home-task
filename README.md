@@ -14,5 +14,5 @@
 - chose option `Install Appium Drivers` and then `UiAutomator2`
 
 ### Programmatic run of Appium server
-- set environment variables `NODE_PATH` and `APPIUM_PATH` and 
+- set environment variables `NODE_PATH` and `APPIUM_PATH`
 
