@@ -12,6 +12,7 @@ import org.junit.BeforeClass;
 import hometask.pom.ChooseFavoriteScreen;
 import hometask.pom.FavoritesScreen;
 import hometask.pom.StartScreen;
+import hometask.pom.TeamScreen;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.remote.AutomationName;
@@ -21,6 +22,7 @@ public class BaseTest {
     public static StartScreen startScreen;
     public static ChooseFavoriteScreen chooseFavoriteScreen;
     public static FavoritesScreen favoritesScreen;
+    public static TeamScreen teamScreen;
     
     @BeforeClass public static void setup() throws MalformedURLException{
         AppiumServer.start();
@@ -38,6 +40,7 @@ public class BaseTest {
         startScreen = new StartScreen(driver);
         chooseFavoriteScreen = new ChooseFavoriteScreen(driver);
         favoritesScreen = new FavoritesScreen(driver);
+        teamScreen = new TeamScreen(driver);
 
         initialApplicationSetup();
     }

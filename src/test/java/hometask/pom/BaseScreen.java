@@ -3,6 +3,7 @@ package hometask.pom;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
@@ -22,4 +23,12 @@ public class BaseScreen {
 
     @AndroidFindBy(id= "com.fivemobile.thescore:id/btn_secondary")
     public WebElement maybeLaterLink;
+
+    public WebElement getBottomNavitationItem(String label){
+        return this.driver.findElement(
+            AppiumBy.xpath(
+                String.format("//android.widget.FrameLayout[@resource-id='com.fivemobile.thescore:id/bottom_navigation']//android.widget.FrameLayout[@content-desc='%s']", label)
+            )
+        );
+    }
 }
