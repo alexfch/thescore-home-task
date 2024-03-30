@@ -10,11 +10,8 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 public class FavoritesScreen extends BaseScreen {
 
-    private AndroidDriver driver;
-
     public FavoritesScreen(AndroidDriver driver){
         super(driver);
-        this.driver = driver;
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 

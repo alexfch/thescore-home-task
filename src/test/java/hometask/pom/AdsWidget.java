@@ -7,12 +7,13 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
+/**
+ * I assume the widget with various ads can appear at different places, so I implemented it as a separate class
+ */
+
 public class AdsWidget {
 
-    private AndroidDriver driver;
-
     public AdsWidget(AndroidDriver driver){
-        this.driver = driver;
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 

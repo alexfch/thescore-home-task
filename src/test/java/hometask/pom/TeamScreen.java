@@ -12,11 +12,9 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 public class TeamScreen extends BaseScreen {
-    private AndroidDriver driver;
-
+    
     public TeamScreen(AndroidDriver driver){
         super(driver);
-        this.driver = driver;
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
