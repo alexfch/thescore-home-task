@@ -1,7 +1,14 @@
 package hometask.pom;
 
+import java.time.Duration;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
@@ -34,5 +41,18 @@ public class BaseScreen {
                 String.format("//android.widget.FrameLayout[@resource-id='com.fivemobile.thescore:id/bottom_navigation']//android.widget.FrameLayout[@content-desc='%s']", label)
             )
         );
+    }
+
+    public void clickTab(String tabName){
+        WebElement tab = this.driver.findElement(AppiumBy.xpath(String.format("//android.widget.TextView[@text='%s']", tabName)));
+        tab.click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.elementToBeSelected(tab));
+    }
+
+    public boolean containsText(String[] text){
+        List<WebElement> elements = this.driver.findElements(AppiumBy.xpath("//hierarchy/android.widget.FrameLayout//*"));
+        String textContent = elements.stream().map(el -> el.getText()).collect(Collectors.joining(" "));
+        return Arrays.stream(text).allMatch(textContent::contains);
     }
 }

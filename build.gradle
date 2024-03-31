@@ -15,5 +15,8 @@ dependencies {
 }
 
 test {
-    
+    reports {
+    	html.enabled = true
+    	junitXml.enabled = false
+    }
 }
