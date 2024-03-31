@@ -15,6 +15,9 @@ dependencies {
 }
 
 test {
+    environment "NODE_PATH", project.NODE_PATH
+    environment "APPIUM_PATH", project.APPIUM_PATH
+    
     reports {
     	html.enabled = true
     	junitXml.enabled = false
