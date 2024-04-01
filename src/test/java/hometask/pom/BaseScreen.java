@@ -32,6 +32,14 @@ public class BaseScreen {
         adsWidget = new AdsWidget(driver);
     }
 
+    @AndroidFindBy(id="com.fivemobile.thescore:id/bottom_navigation")
+    public WebElement mainNavigationPanel;
+
+    public WebElement getMenu(String menuName){
+        return this.driver.findElement(AppiumBy.accessibilityId(menuName));
+    }
+
+
     @AndroidFindBy(id= "com.fivemobile.thescore:id/btn_secondary")
     public WebElement maybeLaterLink;
     

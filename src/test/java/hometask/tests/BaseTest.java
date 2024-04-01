@@ -1,8 +1,7 @@
-package hometask;
+package hometask.tests;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.net.MalformedURLException;
 import java.time.Duration;
 
 import org.junit.jupiter.api.AfterAll;
@@ -11,6 +10,7 @@ import org.junit.jupiter.api.BeforeAll;
 import hometask.pom.GetStartedScreen;
 import hometask.pom.LeagueScreen;
 import hometask.pom.PlayerScreen;
+import hometask.AppiumServer;
 import hometask.pom.BaseScreen;
 import hometask.pom.FavoritesScreen;
 import hometask.pom.TeamScreen;
@@ -27,7 +27,7 @@ public class BaseTest {
     public static LeagueScreen leagueScreen;
     public static PlayerScreen playerScreen;
     
-    @BeforeAll public static void setup() throws MalformedURLException{
+    @BeforeAll public static void setup(){
         AppiumServer.start();
         
         UiAutomator2Options options = new UiAutomator2Options();
@@ -54,7 +54,7 @@ public class BaseTest {
         AppiumServer.stop();
     }
 
-    private static void initialApplicationSetup(){
+    public static void initialApplicationSetup(){
         if(getStartedScreen.getStartedButton.isDisplayed()){
             getStartedScreen.getStartedButton.click();
             getStartedScreen.choose("NHL Hockey");
@@ -78,6 +78,9 @@ public class BaseTest {
         }
         else if(playerScreen.isDisplayed()){
             return "Player";
+        }
+        else if(favoritesScreen.isDisplayed()){
+            return "Favorites";
         }
         return "Unknwon Screen";
     }

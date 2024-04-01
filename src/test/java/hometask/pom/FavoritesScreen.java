@@ -25,4 +25,11 @@ public class FavoritesScreen extends BaseScreen {
             )
         );
     }
+
+    public boolean isDisplayed(){
+        boolean panel =  favoritesPanel.isDisplayed();
+        boolean tab = mainNavigationPanel.isDisplayed();
+        boolean selected = getMenu("Favorites").isSelected();
+        return panel & tab & selected;
+    }
 }

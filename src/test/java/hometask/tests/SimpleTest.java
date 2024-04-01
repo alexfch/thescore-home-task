@@ -1,4 +1,4 @@
-package hometask;
+package hometask.tests;
 
 import org.junit.jupiter.api.Test;
 

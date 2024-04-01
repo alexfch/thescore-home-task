@@ -15,7 +15,9 @@
 - update values for `NODE_PATH` and `APPIUM_PATH` environment variables in `gradle.properties` file.
 
 # Test execution
-- run all tests by command `gradle test`
+## JUnit tests
+- run all tests by command `./gradlew test`
 - to run a particular test specift it's name. Example: `gradle test --tests '*SimpleTest'`
 - for more details see [gradle documentation](https://docs.gradle.org/current/userguide/java_testing.html)
-
+## Cucumber tests
+- run all tests by command `./gradlew cucumber`
