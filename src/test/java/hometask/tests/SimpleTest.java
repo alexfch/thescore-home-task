@@ -30,9 +30,5 @@ public class SimpleTest extends BaseTest {
         assertTrue(favoritesScreen.getBottomNavitationItem("Favorites").isSelected());
         assertTrue(favoritesScreen.getFavoriteItem("TOR").isDisplayed());
 
-        //TODO
-        //Ensure the repository has a well formatted README.md file withdocumentation for setting up and running your submission from thecommand line on a macOS
-        //Add Cucumber?
-        //Bonus: Write a short description of the rationale you used to decideyour test approach and provide a coverage assessment of the featureyour tests targeted.
     }
 }
