@@ -1,13 +1,14 @@
 package hometask;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 
 public class SimpleTest extends BaseTest {
-    @Test public void testTeamNavigation(){
+    @Test
+    void testTeamNavigation(){
         //Open a league, team, or player page of your choice (bonus points for using a data-driven or parameterized approach).
         favoritesScreen.getFavoriteItem("TOR").click();
         

@@ -1,13 +1,12 @@
 package hometask;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.time.Duration;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 
 import hometask.pom.GetStartedScreen;
 import hometask.pom.LeagueScreen;
@@ -28,7 +27,7 @@ public class BaseTest {
     public static LeagueScreen leagueScreen;
     public static PlayerScreen playerScreen;
     
-    @BeforeClass public static void setup() throws MalformedURLException{
+    @BeforeAll public static void setup() throws MalformedURLException{
         AppiumServer.start();
         
         UiAutomator2Options options = new UiAutomator2Options();
@@ -38,7 +37,6 @@ public class BaseTest {
         options.setApp(System.getProperty("user.dir") + "/app/thescore_24.5.0.apk");
     
         driver = new AndroidDriver(AppiumServer.getUrl(), options);
-        //driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         mainScreen = new BaseScreen(driver);
@@ -51,7 +49,7 @@ public class BaseTest {
         initialApplicationSetup();
     }
 
-     @AfterClass public static void teardown(){
+     @AfterAll public static void teardown(){
         driver.quit();
         AppiumServer.stop();
     }

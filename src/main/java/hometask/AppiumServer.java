@@ -1,6 +1,5 @@
 package hometask;
 
-import java.io.File;
 import java.net.URL;
 
 import io.appium.java_client.service.local.AppiumDriverLocalService;

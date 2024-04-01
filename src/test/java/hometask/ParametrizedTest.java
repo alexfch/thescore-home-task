@@ -1,64 +1,19 @@
 package hometask;
 
-import org.junit.After;
-import org.junit.BeforeClass;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExternalResource;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
+import org.junit.jupiter.api.BeforeAll;
 
-import java.util.Arrays;
-import java.util.Collection;
+import static org.junit.jupiter.api.Assertions.*;
 
-@RunWith(Parameterized.class)
+import java.util.stream.Stream;
+
 public class ParametrizedTest extends BaseTest {
-    
-    @Parameters
-    public static Collection<Object[]> data(){
-        return Arrays.asList(new Object[][] {
-            {
-                "Team",
-                "TOR",
-                new String[]{"Toronto Maple Leafs", "PLAYER STATS"},
-                "TEAM STATS",
-                new String[]{"OFFENSIVE STATS", "DEFENSIVE STATS"}
-            },
-            {
-                "League",
-                "NHL",
-                new String[]{"NHL", "NEWS", "STANDINGS"},
-                "LEADERS",
-                new String[]{"Points", "Goals Scored"}
-            },
-            {
-                "Player",
-                "L. James",
-                new String[]{"LeBron James", "#23", "CAREER"},
-                "INFO",
-                new String[]{"Birth Date", "Birth Place", "Height"}
-            }
-        });
-    }
 
-    String screen;
-    String favoriteItem;
-    String[] screenIdentifiers;
-    String tab;
-    String[] tabIdentifiers;
-
-    public ParametrizedTest(String screen, String favoriteItem, String[] screenIdentifiers, String tab, String[] tabIdentifiers){
-        this.screen = screen;
-        this.favoriteItem = favoriteItem;
-        this.screenIdentifiers = screenIdentifiers;
-        this.tab = tab;
-        this.tabIdentifiers = tabIdentifiers;
-    }
-
-    @BeforeClass
+    @BeforeAll
     public static void addFavoritePlayer(){
         favoritesScreen.getFavoriteItem("Add").click();
         playerScreen.clickTab("PLAYERS");
@@ -66,8 +21,9 @@ public class ParametrizedTest extends BaseTest {
         driver.navigate().back();
     }
 
-    @Test
-    public void testNavigationParametrized(){
+    @ParameterizedTest
+    @MethodSource("testData")
+    public void testNavigationParametrized(String screen, String favoriteItem, String[] screenIdentifiers, String tab, String[] tabIdentifiers){
         
         //Open a league, team, or player page of your choice (bonus points for using a data-driven or parameterized approach).
         favoritesScreen.getFavoriteItem(favoriteItem).click();
@@ -86,5 +42,31 @@ public class ParametrizedTest extends BaseTest {
         driver.navigate().back();
         assertTrue(favoritesScreen.getBottomNavitationItem("Favorites").isSelected());
         assertTrue(favoritesScreen.getFavoriteItem(favoriteItem).isDisplayed());
+    }
+
+    static Stream<Arguments> testData(){
+        return Stream.of(
+            arguments(
+                "Team",
+                "TOR",
+                new String[]{"Toronto Maple Leafs", "PLAYER STATS"},
+                "TEAM STATS",
+                new String[]{"OFFENSIVE STATS", "DEFENSIVE STATS"}
+            ),
+            arguments(
+                "League",
+                "NHL",
+                new String[]{"NHL", "NEWS", "STANDINGS"},
+                "LEADERS",
+                new String[]{"Points", "Goals Scored"}
+            ),
+            arguments(
+                "Player",
+                "L. James",
+                new String[]{"LeBron James", "#23", "CAREER"},
+                "INFO",
+                new String[]{"Birth Date", "Birth Place", "Height"}
+            )
+        );
     }
 }
