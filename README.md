@@ -1,5 +1,3 @@
-//Bonus: Write a short description of the rationale you used to decide your test approach and provide a coverage assessment of the feature your tests targeted.
-
 # Task comments
 ## About tech Stack
 - **Java**. The task says 'You can choose the programming language of your choice'. But job description mentions Java, Kotlin, Cucumber, and the task mentiones 'The test host will have Java 11'. Kotlin is recommended, but I don't know it. Even though I'd be happy to learn it during the task, it would incerease risks of not completing the task in time. So I chose Java.
